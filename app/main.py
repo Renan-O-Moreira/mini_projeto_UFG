@@ -10,6 +10,7 @@ from app.repositorios.repositorio_cupons import popular_cupons_iniciais
 from app.repositorios.repositorio_produtos import popular_produtos_iniciais
 from app.rotas.carrinho import roteador as roteador_carrinho
 from app.rotas.cupom import roteador as roteador_cupom
+from app.rotas.frete import roteador as roteador_frete
 from app.rotas.produtos import roteador as roteador_produtos
 
 
@@ -33,6 +34,7 @@ aplicacao = FastAPI(
 aplicacao.include_router(roteador_produtos)
 aplicacao.include_router(roteador_carrinho)
 aplicacao.include_router(roteador_cupom)
+aplicacao.include_router(roteador_frete)
 
 aplicacao.mount(
     "/", StaticFiles(directory="frontend", html=True), name="frontend"
