@@ -7,6 +7,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.banco_dados.conexao import inicializar_banco, obter_conexao
 from app.repositorios.repositorio_produtos import popular_produtos_iniciais
+from app.rotas.carrinho import roteador as roteador_carrinho
 from app.rotas.produtos import roteador as roteador_produtos
 
 
@@ -27,6 +28,7 @@ aplicacao = FastAPI(
 )
 
 aplicacao.include_router(roteador_produtos)
+aplicacao.include_router(roteador_carrinho)
 
 aplicacao.mount(
     "/", StaticFiles(directory="frontend", html=True), name="frontend"

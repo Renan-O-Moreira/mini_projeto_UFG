@@ -5,6 +5,7 @@ import sqlite3
 import pytest
 
 from app.config import CAMINHO_ESQUEMA_SQL
+from app.repositorios.repositorio_produtos import popular_produtos_iniciais
 
 
 @pytest.fixture
@@ -24,3 +25,10 @@ def conexao_teste() -> sqlite3.Connection:
     yield conexao
 
     conexao.close()
+
+
+@pytest.fixture
+def conexao_com_produtos(conexao_teste: sqlite3.Connection) -> sqlite3.Connection:
+    """Conexão de teste já populada com os produtos iniciais."""
+    popular_produtos_iniciais(conexao_teste)
+    return conexao_teste
