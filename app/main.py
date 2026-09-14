@@ -10,6 +10,8 @@ from app.repositorios.repositorio_cupons import popular_cupons_iniciais
 from app.repositorios.repositorio_produtos import popular_produtos_iniciais
 from app.rotas.carrinho import roteador as roteador_carrinho
 from app.rotas.cupom import roteador as roteador_cupom
+from app.rotas.endereco import roteador as roteador_endereco
+from app.rotas.favoritos import roteador as roteador_favoritos
 from app.rotas.frete import roteador as roteador_frete
 from app.rotas.produtos import roteador as roteador_produtos
 
@@ -35,6 +37,8 @@ aplicacao.include_router(roteador_produtos)
 aplicacao.include_router(roteador_carrinho)
 aplicacao.include_router(roteador_cupom)
 aplicacao.include_router(roteador_frete)
+aplicacao.include_router(roteador_endereco)
+aplicacao.include_router(roteador_favoritos)
 
 aplicacao.mount(
     "/", StaticFiles(directory="frontend", html=True), name="frontend"
