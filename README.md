@@ -80,6 +80,8 @@ ser testada pelo avaliador da atividade, sem custos com APIs ou serviços pagos.
 - [Python 3.11 ou superior](https://www.python.org/downloads/) instalado
 - [pip](https://pip.pypa.io/en/stable/installation/) (geralmente já
   incluso na instalação do Python)
+- `make` (opcional, mas recomendado — já vem instalado por padrão em
+  Linux e macOS; ver alternativas para Windows na seção de instalação)
 - Navegador web atualizado (Chrome, Firefox, Edge, etc.)
 - Conexão com a internet (apenas para a consulta de CEP via ViaCEP)
 
@@ -89,6 +91,43 @@ ser testada pelo avaliador da atividade, sem custos com APIs ou serviços pagos.
 ---
 
 ## Instalação passo a passo
+
+O projeto inclui um **`Makefile`** com os três comandos necessários
+para instalar, rodar e testar a aplicação — a forma mais simples e
+recomendada de executá-la, inclusive em uma máquina limpa (sem
+`venv` ou dependências pré-instaladas):
+
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/Renan-O-Moreira/mini_projeto_UFG.git
+cd mini_projeto_UFG
+
+# 2. Instalar (cria o ambiente virtual e instala as dependências)
+make install
+
+# 3. Rodar a aplicação
+make run
+```
+
+Após iniciar, acesse:
+
+- Aplicação: <http://localhost:8000>
+- Documentação interativa da API (Swagger): <http://localhost:8000/docs>
+
+> `make` já vem instalado por padrão em Linux e macOS. No Windows, use
+> o WSL, o Git Bash (com `make` instalado via `choco install make`) ou
+> siga a instalação manual abaixo.
+
+### Comandos disponíveis no Makefile
+
+| Comando | O que faz |
+|---|---|
+| `make install` | Cria o ambiente virtual (`venv/`) e instala as dependências de produção e de desenvolvimento |
+| `make run` | Inicia o servidor (`python main.py`) |
+| `make test` | Executa a suíte completa de testes automatizados (`pytest testes/ -v`) |
+| `make clean` | Remove o ambiente virtual, o banco de dados local e os caches de execução |
+
+### Instalação manual (alternativa, sem `make`)
 
 ```bash
 # 1. Clonar o repositório
@@ -111,11 +150,6 @@ cp .env.example .env
 python main.py
 ```
 
-Após iniciar, acesse:
-
-- Aplicação: <http://localhost:8000>
-- Documentação interativa da API (Swagger): <http://localhost:8000/docs>
-
 ### Variáveis de ambiente (`.env`)
 
 Veja [`.env.example`](.env.example) — todas são opcionais e a aplicação
@@ -128,6 +162,12 @@ funciona com os padrões abaixo caso o arquivo `.env` não seja criado:
 | `RELOAD` | `true` | Reinício automático ao alterar o código (use `false` em ambientes de teste/entrega) |
 
 ### Executando os testes automatizados
+
+```bash
+make test
+```
+
+Ou manualmente, sem o Makefile:
 
 ```bash
 pip install -r requirements-dev.txt
@@ -143,6 +183,14 @@ A evidência completa da execução dos testes (saída literal do
 terminal, distribuição por módulo e a falha real revelada e corrigida
 durante o TDD) está documentada em
 [`docs/evidencias/evidencias_testes.md`](docs/evidencias/evidencias_testes.md).
+
+### Reprodutibilidade em máquina limpa
+
+O fluxo `make install` → `make test` → `make run` foi validado do
+zero, removendo por completo o ambiente virtual, o banco de dados e os
+caches de execução antes de cada comando — confirmando que o projeto
+roda em uma máquina limpa sem nenhum ajuste manual além dos
+pré-requisitos listados acima.
 
 ---
 
@@ -303,9 +351,12 @@ mini_projeto_UFG/
 │   ├── test_api_*.py              # Testes de integração das rotas
 │   └── test_integracao_fluxo_completo.py  # Teste de integração ponta a ponta
 │
-├── docs/imagens/                  # Capturas de tela usadas neste README
+├── docs/
+│   ├── imagens/                    # Capturas de tela usadas neste README
+│   └── evidencias/                 # Evidências de execução dos testes
 │
-├── main.py                        # Script de start (lê variáveis de ambiente)
+├── Makefile                        # Atalhos: make install | run | test | clean
+├── main.py                         # Script de start (lê variáveis de ambiente)
 ├── requirements.txt                # Dependências de produção
 ├── requirements-dev.txt            # Dependências de desenvolvimento/teste
 ├── .env.example                    # Modelo de variáveis de ambiente
