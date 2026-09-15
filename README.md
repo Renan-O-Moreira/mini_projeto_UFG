@@ -139,6 +139,11 @@ integração), incluindo um teste de integração de ponta a ponta que
 percorre o fluxo completo de compra (catálogo → carrinho → cupom →
 frete → CEP → favoritos).
 
+A evidência completa da execução dos testes (saída literal do
+terminal, distribuição por módulo e a falha real revelada e corrigida
+durante o TDD) está documentada em
+[`docs/evidencias/evidencias_testes.md`](docs/evidencias/evidencias_testes.md).
+
 ---
 
 ## Uso e exemplos
