@@ -3,11 +3,17 @@
 import sqlite3
 from pathlib import Path
 
-from app.config import CAMINHO_BANCO_DADOS, CAMINHO_ESQUEMA_SQL
+from app import config
 
 
-def obter_conexao(caminho_banco: Path = CAMINHO_BANCO_DADOS) -> sqlite3.Connection:
+def obter_conexao(caminho_banco: Path | None = None) -> sqlite3.Connection:
     """Abre e retorna uma conexão com o banco de dados SQLite.
+
+    Quando `caminho_banco` não é informado, usa `app.config.CAMINHO_BANCO_DADOS`
+    resolvido no momento da chamada (não na definição da função) — isso
+    permite que os testes substituam esse caminho por um banco isolado
+    e temporário, sem afetar o banco de dados real da aplicação
+    (`dados/loja.sqlite`).
 
     A conexão é configurada para retornar linhas como `sqlite3.Row`,
     permitindo acesso aos campos pelo nome da coluna. O esquema é
@@ -16,6 +22,7 @@ def obter_conexao(caminho_banco: Path = CAMINHO_BANCO_DADOS) -> sqlite3.Connecti
     `lifespan` da aplicação ter sido executado (ex.: em testes ou
     scripts que abrem a conexão diretamente).
     """
+    caminho_banco = caminho_banco or config.CAMINHO_BANCO_DADOS
     try:
         caminho_banco.parent.mkdir(parents=True, exist_ok=True)
         conexao = sqlite3.connect(caminho_banco)
@@ -27,7 +34,7 @@ def obter_conexao(caminho_banco: Path = CAMINHO_BANCO_DADOS) -> sqlite3.Connecti
         raise RuntimeError(f"Falha ao conectar ao banco de dados: {erro}") from erro
 
 
-def inicializar_banco(caminho_banco: Path = CAMINHO_BANCO_DADOS) -> None:
+def inicializar_banco(caminho_banco: Path | None = None) -> None:
     """Cria as tabelas do banco de dados a partir do script de esquema.
 
     É seguro chamar esta função múltiplas vezes: o script utiliza
@@ -42,5 +49,5 @@ def inicializar_banco(caminho_banco: Path = CAMINHO_BANCO_DADOS) -> None:
 
 def _garantir_esquema(conexao: sqlite3.Connection) -> None:
     """Executa o script de esquema, criando tabelas ainda não existentes."""
-    script_sql = CAMINHO_ESQUEMA_SQL.read_text(encoding="utf-8")
+    script_sql = config.CAMINHO_ESQUEMA_SQL.read_text(encoding="utf-8")
     conexao.executescript(script_sql)

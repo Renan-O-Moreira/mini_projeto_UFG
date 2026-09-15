@@ -89,6 +89,19 @@ silêncio. A causa e a correção completa (incluindo evidência visual
 antes/depois) estão documentadas em
 [`correcao_cep_nao_encontrado.md`](correcao_cep_nao_encontrado.md).
 
+## Falha real identificada pelo avaliador: testes poluídos pelo banco real
+
+Ao testar o projeto de forma independente — servidor rodando em um
+terminal enquanto a suíte de testes era executada em outro, sem apagar
+nada entre os passos —, o avaliador obteve 4 falhas nos testes de API,
+todas causadas por dados de uso manual (via navegador) vazando para
+dentro dos testes. A causa raiz era um valor padrão de parâmetro
+fixado em tempo de importação em `obter_conexao()`, que fazia os
+testes de API usarem o banco de dados real do projeto em vez de um
+banco isolado. A correção e a validação completa (reproduzindo o
+cenário exato do avaliador) estão documentadas em
+[`correcao_isolamento_testes.md`](correcao_isolamento_testes.md).
+
 ## Como reproduzir esta evidência
 
 ```bash

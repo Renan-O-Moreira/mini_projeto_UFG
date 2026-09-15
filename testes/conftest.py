@@ -1,11 +1,28 @@
 """Fixtures compartilhadas entre os testes."""
 
 import sqlite3
+from pathlib import Path
 
 import pytest
 
+from app import config
 from app.config import CAMINHO_ESQUEMA_SQL
 from app.repositorios.repositorio_produtos import popular_produtos_iniciais
+
+
+@pytest.fixture(autouse=True)
+def banco_de_dados_isolado(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Isola cada teste em um banco de dados SQLite temporário e exclusivo.
+
+    Sem esta fixture, testes que sobem a aplicação real via `TestClient`
+    (ex.: `test_api_*.py`) acabam lendo e escrevendo no banco de dados
+    de produção (`dados/loja.sqlite`), poluindo a suíte com dados de
+    execuções manuais anteriores (ex.: itens de carrinho deixados por
+    testes feitos pelo navegador). Isso é aplicado automaticamente a
+    todos os testes, sem precisar ser referenciado explicitamente.
+    """
+    caminho_temporario = tmp_path / "teste_loja.sqlite"
+    monkeypatch.setattr(config, "CAMINHO_BANCO_DADOS", caminho_temporario)
 
 
 @pytest.fixture
