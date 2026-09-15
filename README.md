@@ -429,6 +429,17 @@ antes de seguir adiante (*human on the loop*).
   próprio avaliador, seguindo o passo a passo documentado no README, o
   que reforça o valor de validar o software do ponto de vista de quem
   vai efetivamente usá-lo, e não apenas dos testes automatizados.
+- **Bug de isolamento de testes encontrado pelo avaliador**: ao testar
+  o projeto de forma independente (servidor rodando em um terminal e a
+  suíte de testes em outro, sem apagar nada entre os passos), o
+  avaliador obteve 4 falhas causadas por dados de uso manual vazando
+  para dentro dos testes de API — o banco de dados real do projeto
+  estava sendo usado pelos testes em vez de um banco isolado, devido a
+  um valor padrão de parâmetro fixado incorretamente em tempo de
+  importação. A causa foi diagnosticada e corrigida (resolução
+  dinâmica do caminho do banco + fixture automática de isolamento em
+  todos os testes), e a correção foi validada reproduzindo o cenário
+  exato relatado pelo avaliador.
 - **Documentação incremental**: em vez de deixar a documentação para o
   final, pedi ao agente para ir completando o `README.md` à medida que
   cada etapa do projeto avançava, incluindo o diagrama de arquitetura,
