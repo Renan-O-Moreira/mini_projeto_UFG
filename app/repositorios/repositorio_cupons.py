@@ -6,7 +6,7 @@ from app.modelos.cupom import Cupom
 
 CUPONS_INICIAIS = [
     {"codigo": "BEMVINDO10", "percentual_desconto": 10.0},
-    {"codigo": "FRETEGRATIS20", "percentual_desconto": 20.0},
+    {"codigo": "PRIMEIRACOMPRA20", "percentual_desconto": 20.0},
 ]
 
 

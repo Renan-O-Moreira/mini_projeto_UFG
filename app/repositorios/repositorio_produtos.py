@@ -10,8 +10,8 @@ PRODUTOS_INICIAIS = [
         "descricao": "Camiseta 100% algodão, corte tradicional.",
         "preco": 59.90,
         "cores": [
-            {"nome_cor": "Branca", "url_imagem": "/imagens/produtos/camiseta_branca.png"},
-            {"nome_cor": "Preta", "url_imagem": "/imagens/produtos/camiseta_preta.png"},
+            {"nome_cor": "Branca", "url_imagem": "/imagens/produtos/camiseta_branca.svg"},
+            {"nome_cor": "Preta", "url_imagem": "/imagens/produtos/camiseta_preta.svg"},
         ],
     },
     {
@@ -19,8 +19,8 @@ PRODUTOS_INICIAIS = [
         "descricao": "Tênis leve para corrida e caminhada.",
         "preco": 199.90,
         "cores": [
-            {"nome_cor": "Cinza", "url_imagem": "/imagens/produtos/tenis_cinza.png"},
-            {"nome_cor": "Azul", "url_imagem": "/imagens/produtos/tenis_azul.png"},
+            {"nome_cor": "Cinza", "url_imagem": "/imagens/produtos/tenis_cinza.svg"},
+            {"nome_cor": "Azul", "url_imagem": "/imagens/produtos/tenis_azul.svg"},
         ],
     },
     {
@@ -28,8 +28,8 @@ PRODUTOS_INICIAIS = [
         "descricao": "Mochila resistente com compartimento para notebook.",
         "preco": 149.90,
         "cores": [
-            {"nome_cor": "Preta", "url_imagem": "/imagens/produtos/mochila_preta.png"},
-            {"nome_cor": "Verde", "url_imagem": "/imagens/produtos/mochila_verde.png"},
+            {"nome_cor": "Preta", "url_imagem": "/imagens/produtos/mochila_preta.svg"},
+            {"nome_cor": "Verde", "url_imagem": "/imagens/produtos/mochila_verde.svg"},
         ],
     },
 ]

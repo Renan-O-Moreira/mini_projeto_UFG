@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <linearGradient id="corpoCinza" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C7CDD3"/>
+      <stop offset="55%" stop-color="#9AA3AC"/>
+      <stop offset="100%" stop-color="#6E7680"/>
+    </linearGradient>
+    <linearGradient id="solaCinza" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7D858E"/>
+      <stop offset="100%" stop-color="#454B52"/>
+    </linearGradient>
+    <radialGradient id="brilhoCinza" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="122" cy="196" rx="96" ry="12" fill="#000" opacity=".16"/>
+  <path d="M36 178 C34 168 38 158 50 152 L70 143 C74 124 90 108 112 102 C124 99 138 100 148 106
+           L163 115 C176 112 188 116 194 126 C199 134 199 143 195 152 L206 152 C210 152 212 156 210 160
+           L204 178 Z"
+        fill="url(#corpoCinza)" stroke="#5F6870" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M70 143 C74 124 90 108 112 102 C122 99 133 100 141 104 L120 128 Z" fill="#DDE2E6" opacity=".85"/>
+  <path d="M148 106 L163 115 C176 112 188 116 194 126" fill="none" stroke="#5F6870" stroke-width="4" stroke-linecap="round"/>
+  <rect x="34" y="172" width="176" height="16" rx="8" fill="url(#solaCinza)"/>
+  <path d="M96 126 L116 119 M104 137 L124 130 M112 148 L130 142" stroke="#F5F3EE" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M36 178 C34 168 38 158 50 152 L70 143 C74 124 90 108 112 102 C124 99 138 100 148 106
+           L163 115 C176 112 188 116 194 126 C199 134 199 143 195 152 L206 152 C210 152 212 156 210 160
+           L204 178 Z" fill="url(#brilhoCinza)"/>
+</svg>

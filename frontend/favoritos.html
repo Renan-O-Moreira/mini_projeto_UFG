@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favoritos — Loja UFG</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">loja<em>ufg</em></a>
+    <nav class="principal">
+      <a href="index.html">Catálogo</a>
+      <a class="ativo" href="favoritos.html">Favoritos</a>
+      <a class="carrinho-btn" href="carrinho.html">Carrinho <span class="badge" id="badge-carrinho">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="pagina-titulo">Seus favoritos</h1>
+    <div class="grade" id="grade-favoritos">
+      <p>Carregando favoritos...</p>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/favoritos.js"></script>
+</body>
+</html>

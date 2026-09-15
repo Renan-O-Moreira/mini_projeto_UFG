@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho — Loja UFG</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">loja<em>ufg</em></a>
+    <nav class="principal">
+      <a href="index.html">Catálogo</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a class="carrinho-btn ativo" href="carrinho.html">Carrinho <span class="badge" id="badge-carrinho">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="pagina-titulo">Seu carrinho</h1>
+
+    <div class="tabela-carrinho" id="lista-carrinho">
+      <p>Carregando carrinho...</p>
+    </div>
+
+    <div class="resumo" id="resumo-carrinho" style="display:none">
+      <div class="resumo-linha"><span>Subtotal</span><span id="resumo-subtotal">R$ 0,00</span></div>
+      <div class="resumo-linha" id="linha-desconto" style="display:none"><span id="desconto-label">Desconto</span><span id="resumo-desconto">- R$ 0,00</span></div>
+      <div class="resumo-linha" id="linha-frete" style="display:none"><span>Frete</span><span id="resumo-frete">R$ 0,00</span></div>
+      <hr>
+
+      <div>
+        <label for="campo-cupom" style="font-size:.85rem;color:var(--tinta-suave)">Cupom de desconto</label>
+        <div class="form-linha" style="margin-top:6px">
+          <input type="text" id="campo-cupom" placeholder="Ex: BEMVINDO10">
+          <button id="botao-cupom" type="button">Aplicar</button>
+        </div>
+        <p class="mensagem" id="mensagem-cupom"></p>
+      </div>
+
+      <div>
+        <label for="campo-cep" style="font-size:.85rem;color:var(--tinta-suave)">CEP para entrega</label>
+        <div class="form-linha" style="margin-top:6px">
+          <input type="text" id="campo-cep" placeholder="00000-000" maxlength="9">
+          <button id="botao-cep" type="button">Calcular</button>
+        </div>
+        <p class="mensagem" id="mensagem-cep"></p>
+        <div class="endereco-caixa" id="caixa-endereco"></div>
+      </div>
+
+      <hr>
+      <div class="resumo-linha total"><span>Total</span><span id="resumo-total">R$ 0,00</span></div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/carrinho.js"></script>
+</body>
+</html>
