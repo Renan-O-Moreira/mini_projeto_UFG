@@ -1,0 +1,106 @@
+$ pytest testes/ -v
+
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /home/user/mini_projeto_UFG/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/user/mini_projeto_UFG
+plugins: asyncio-1.4.0, anyio-4.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 84 items
+
+testes/test_api_carrinho.py::test_listar_carrinho_vazio_retorna_200 PASSED [  1%]
+testes/test_api_carrinho.py::test_incluir_item_no_carrinho_retorna_201 PASSED [  2%]
+testes/test_api_carrinho.py::test_incluir_item_com_produto_inexistente_retorna_400 PASSED [  3%]
+testes/test_api_carrinho.py::test_alterar_quantidade_de_item_retorna_200 PASSED [  4%]
+testes/test_api_carrinho.py::test_alterar_quantidade_de_item_inexistente_retorna_404 PASSED [  5%]
+testes/test_api_carrinho.py::test_excluir_item_do_carrinho_retorna_204 PASSED [  7%]
+testes/test_api_carrinho.py::test_excluir_item_inexistente_retorna_404 PASSED [  8%]
+testes/test_api_cupom.py::test_aplicar_cupom_valido_retorna_200 PASSED   [  9%]
+testes/test_api_cupom.py::test_aplicar_cupom_e_insensivel_a_maiusculas PASSED [ 10%]
+testes/test_api_cupom.py::test_aplicar_cupom_inexistente_retorna_404 PASSED [ 11%]
+testes/test_api_cupom.py::test_aplicar_cupom_com_valor_total_negativo_retorna_422 PASSED [ 13%]
+testes/test_api_endereco.py::test_buscar_endereco_com_cep_valido_retorna_200 PASSED [ 14%]
+testes/test_api_endereco.py::test_buscar_endereco_com_cep_inexistente_retorna_404 PASSED [ 15%]
+testes/test_api_endereco.py::test_buscar_endereco_com_formato_invalido_retorna_400 PASSED [ 16%]
+testes/test_api_favoritos.py::test_listar_favoritos_vazio_retorna_200 PASSED [ 17%]
+testes/test_api_favoritos.py::test_adicionar_favorito_retorna_201 PASSED [ 19%]
+testes/test_api_favoritos.py::test_adicionar_favorito_com_produto_inexistente_retorna_400 PASSED [ 20%]
+testes/test_api_favoritos.py::test_remover_favorito_retorna_204 PASSED   [ 21%]
+testes/test_api_favoritos.py::test_remover_favorito_inexistente_retorna_404 PASSED [ 22%]
+testes/test_api_frete.py::test_calcular_frete_com_cep_valido_retorna_200 PASSED [ 23%]
+testes/test_api_frete.py::test_calcular_frete_com_cep_invalido_retorna_400 PASSED [ 25%]
+testes/test_api_produtos.py::test_listar_produtos_retorna_200_e_tres_produtos PASSED [ 26%]
+testes/test_api_produtos.py::test_obter_produto_existente_retorna_200 PASSED [ 27%]
+testes/test_api_produtos.py::test_obter_produto_inexistente_retorna_404 PASSED [ 28%]
+testes/test_integracao_fluxo_completo.py::test_fluxo_completo_da_loja_virtual PASSED [ 29%]
+testes/test_modelo_carrinho.py::test_cria_item_carrinho_entrada_valido PASSED [ 30%]
+testes/test_modelo_carrinho.py::test_item_carrinho_entrada_rejeita_quantidade_zero PASSED [ 32%]
+testes/test_modelo_carrinho.py::test_item_carrinho_entrada_rejeita_quantidade_negativa PASSED [ 33%]
+testes/test_modelo_carrinho.py::test_cria_item_carrinho_detalhado_calcula_subtotal PASSED [ 34%]
+testes/test_modelo_cupom.py::test_cria_cupom_valido PASSED               [ 35%]
+testes/test_modelo_cupom.py::test_cupom_rejeita_percentual_zero PASSED   [ 36%]
+testes/test_modelo_cupom.py::test_cupom_rejeita_percentual_acima_de_cem PASSED [ 38%]
+testes/test_modelo_cupom.py::test_entrada_aplicar_cupom_valida PASSED    [ 39%]
+testes/test_modelo_cupom.py::test_entrada_aplicar_cupom_rejeita_valor_total_negativo PASSED [ 40%]
+testes/test_modelo_endereco.py::test_cria_endereco_valido PASSED         [ 41%]
+testes/test_modelo_endereco.py::test_endereco_aceita_logradouro_e_bairro_vazios PASSED [ 42%]
+testes/test_modelo_favorito.py::test_cria_entrada_favorito_valida PASSED [ 44%]
+testes/test_modelo_favorito.py::test_entrada_favorito_rejeita_produto_id_zero PASSED [ 45%]
+testes/test_modelo_favorito.py::test_entrada_favorito_rejeita_produto_id_negativo PASSED [ 46%]
+testes/test_modelo_frete.py::test_cria_entrada_calcular_frete_valida PASSED [ 47%]
+testes/test_modelo_frete.py::test_entrada_calcular_frete_rejeita_cep_vazio PASSED [ 48%]
+testes/test_modelo_frete.py::test_cria_resultado_frete_valido PASSED     [ 50%]
+testes/test_modelo_produto.py::test_cria_produto_valido_com_cores PASSED [ 51%]
+testes/test_modelo_produto.py::test_produto_sem_cores_usa_lista_vazia_por_padrao PASSED [ 52%]
+testes/test_modelo_produto.py::test_produto_rejeita_preco_negativo PASSED [ 53%]
+testes/test_repositorio_carrinho.py::test_listar_itens_retorna_lista_vazia_para_carrinho_novo PASSED [ 54%]
+testes/test_repositorio_carrinho.py::test_adicionar_item_inclui_no_carrinho PASSED [ 55%]
+testes/test_repositorio_carrinho.py::test_adicionar_mesmo_produto_e_cor_soma_quantidade PASSED [ 57%]
+testes/test_repositorio_carrinho.py::test_adicionar_item_com_produto_inexistente_gera_erro PASSED [ 58%]
+testes/test_repositorio_carrinho.py::test_adicionar_item_com_cor_invalida_para_o_produto_gera_erro PASSED [ 59%]
+testes/test_repositorio_carrinho.py::test_remover_item_exclui_do_carrinho PASSED [ 60%]
+testes/test_repositorio_carrinho.py::test_remover_item_inexistente_gera_erro PASSED [ 61%]
+testes/test_repositorio_carrinho.py::test_atualizar_quantidade_altera_o_item PASSED [ 63%]
+testes/test_repositorio_carrinho.py::test_atualizar_quantidade_de_item_inexistente_gera_erro PASSED [ 64%]
+testes/test_repositorio_cupons.py::test_obter_cupom_inexistente_retorna_none PASSED [ 65%]
+testes/test_repositorio_cupons.py::test_popular_cupons_iniciais_insere_os_cupons PASSED [ 66%]
+testes/test_repositorio_cupons.py::test_popular_cupons_iniciais_e_idempotente PASSED [ 67%]
+testes/test_repositorio_cupons.py::test_obter_cupom_por_codigo_e_insensivel_a_maiusculas PASSED [ 69%]
+testes/test_repositorio_favoritos.py::test_listar_favoritos_retorna_lista_vazia_quando_nao_ha_favoritos PASSED [ 70%]
+testes/test_repositorio_favoritos.py::test_adicionar_favorito_inclui_produto_na_listagem PASSED [ 71%]
+testes/test_repositorio_favoritos.py::test_adicionar_mesmo_favorito_duas_vezes_e_idempotente PASSED [ 72%]
+testes/test_repositorio_favoritos.py::test_adicionar_favorito_com_produto_inexistente_gera_erro PASSED [ 73%]
+testes/test_repositorio_favoritos.py::test_remover_favorito_exclui_da_listagem PASSED [ 75%]
+testes/test_repositorio_favoritos.py::test_remover_favorito_inexistente_gera_erro PASSED [ 76%]
+testes/test_repositorio_produtos.py::test_listar_produtos_retorna_lista_vazia_quando_nao_ha_produtos PASSED [ 77%]
+testes/test_repositorio_produtos.py::test_popular_produtos_iniciais_insere_os_tres_produtos PASSED [ 78%]
+testes/test_repositorio_produtos.py::test_popular_produtos_iniciais_e_idempotente PASSED [ 79%]
+testes/test_repositorio_produtos.py::test_listar_produtos_inclui_as_cores_de_cada_produto PASSED [ 80%]
+testes/test_repositorio_produtos.py::test_obter_produto_por_id_retorna_o_produto_correto PASSED [ 82%]
+testes/test_repositorio_produtos.py::test_obter_produto_por_id_retorna_none_para_id_inexistente PASSED [ 83%]
+testes/test_servico_cupom.py::test_calcular_desconto_aplica_percentual_corretamente PASSED [ 84%]
+testes/test_servico_cupom.py::test_calcular_desconto_com_percentual_de_cem_zera_o_total PASSED [ 85%]
+testes/test_servico_cupom.py::test_calcular_desconto_com_valor_total_zero_retorna_zero PASSED [ 86%]
+testes/test_servico_endereco.py::test_buscar_endereco_por_cep_valido_retorna_endereco_preenchido PASSED [ 88%]
+testes/test_servico_endereco.py::test_buscar_endereco_por_cep_aceita_cep_sem_hifen PASSED [ 89%]
+testes/test_servico_endereco.py::test_buscar_endereco_com_cep_inexistente_gera_erro_de_nao_encontrado PASSED [ 90%]
+testes/test_servico_endereco.py::test_buscar_endereco_com_formato_invalido_gera_value_error PASSED [ 91%]
+testes/test_servico_endereco.py::test_buscar_endereco_com_falha_de_rede_gera_runtime_error PASSED [ 92%]
+testes/test_servico_frete.py::test_calcular_frete_com_cep_valido_e_formatado_retorna_resultado PASSED [ 94%]
+testes/test_servico_frete.py::test_calcular_frete_aceita_cep_sem_hifen PASSED [ 95%]
+testes/test_servico_frete.py::test_calcular_frete_com_mesmo_primeiro_digito_tem_mesmo_valor PASSED [ 96%]
+testes/test_servico_frete.py::test_calcular_frete_com_regioes_diferentes_tem_valores_diferentes PASSED [ 97%]
+testes/test_servico_frete.py::test_calcular_frete_com_cep_de_formato_invalido_gera_erro PASSED [ 98%]
+testes/test_servico_frete.py::test_calcular_frete_com_cep_nao_numerico_gera_erro PASSED [100%]
+
+=============================== warnings summary ===============================
+venv/lib/python3.11/site-packages/fastapi/testclient.py:1
+  /home/user/mini_projeto_UFG/venv/lib/python3.11/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+venv/lib/python3.11/site-packages/starlette/testclient.py:53
+  /home/user/mini_projeto_UFG/venv/lib/python3.11/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 84 passed, 2 warnings in 0.65s ========================
