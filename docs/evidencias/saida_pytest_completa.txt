@@ -103,4 +103,4 @@ venv/lib/python3.11/site-packages/starlette/testclient.py:53
     _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-======================== 84 passed, 2 warnings in 0.65s ========================
+======================== 84 passed, 2 warnings in 0.57s ========================

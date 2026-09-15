@@ -175,5 +175,6 @@ main{max-width:1120px;margin:0 auto;padding-block:8px 110px}
 
 .endereco-caixa{background:var(--ambar-suave);border-radius:8px;padding:10px 12px;font-size:.85rem;color:var(--tinta);display:none}
 .endereco-caixa.visivel{display:block}
+.endereco-caixa.erro{background:transparent;color:var(--erro);padding:0;font-weight:600}
 
 .vazio{color:var(--tinta-suave);text-align:center;padding:60px 20px}

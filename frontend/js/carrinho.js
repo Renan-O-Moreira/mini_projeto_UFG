@@ -194,7 +194,11 @@ async function calcularFreteECep() {
     if (endereco.status === "fulfilled") {
       const dados = endereco.value;
       caixaEndereco.textContent = `${dados.logradouro ? dados.logradouro + ", " : ""}${dados.bairro ? dados.bairro + " — " : ""}${dados.cidade}/${dados.estado}`;
+      caixaEndereco.classList.remove("erro");
       caixaEndereco.classList.add("visivel");
+    } else {
+      caixaEndereco.textContent = endereco.reason.message;
+      caixaEndereco.classList.add("visivel", "erro");
     }
   } catch (erro) {
     exibirMensagem("mensagem-cep", "Não foi possível calcular o frete.", "erro");

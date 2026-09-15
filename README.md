@@ -180,8 +180,9 @@ percorre o fluxo completo de compra (catálogo → carrinho → cupom →
 frete → CEP → favoritos).
 
 A evidência completa da execução dos testes (saída literal do
-terminal, distribuição por módulo e a falha real revelada e corrigida
-durante o TDD) está documentada em
+terminal, distribuição por módulo e as falhas reais reveladas e
+corrigidas — durante o TDD e durante testes manuais na perspectiva do
+avaliador) está documentada em
 [`docs/evidencias/evidencias_testes.md`](docs/evidencias/evidencias_testes.md).
 
 ### Reprodutibilidade em máquina limpa
@@ -420,9 +421,14 @@ antes de seguir adiante (*human on the loop*).
   (paletas e disposições diferentes) para escolha, e só então o
   frontend final foi implementado consumindo as APIs do backend.
 - **Depuração assistida**: identificação e correção de bugs reais
-  encontrados durante a validação manual (por exemplo, o desconto do
+  encontrados durante a validação manual — por exemplo, o desconto do
   cupom não sendo recalculado ao alterar a quantidade de itens no
-  carrinho).
+  carrinho, e a busca de endereço falhando em silêncio (sem exibir
+  nenhuma mensagem) quando um CEP inexistente era informado. Esse
+  último caso foi identificado ao testar o sistema pela perspectiva do
+  próprio avaliador, seguindo o passo a passo documentado no README, o
+  que reforça o valor de validar o software do ponto de vista de quem
+  vai efetivamente usá-lo, e não apenas dos testes automatizados.
 - **Documentação incremental**: em vez de deixar a documentação para o
   final, pedi ao agente para ir completando o `README.md` à medida que
   cada etapa do projeto avançava, incluindo o diagrama de arquitetura,
