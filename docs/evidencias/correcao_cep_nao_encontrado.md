@@ -48,12 +48,38 @@ confirmando visualmente o comportamento em ambas as páginas
 
 ![Mensagem de erro exibida corretamente para CEP inexistente](imagens/correcao_cep_nao_encontrado.png)
 
-Resultado observado após a correção, para o CEP `00000000`:
+Resultado observado nesta primeira correção, para o CEP `00000000`:
 
 | Campo | Antes da correção | Depois da correção |
 |---|---|---|
-| Frete | R$ 15,00 · Prazo: 3 dia(s) | R$ 15,00 · Prazo: 3 dia(s) *(inalterado — comportamento correto, é simulado)* |
+| Frete | R$ 15,00 · Prazo: 3 dia(s) | R$ 15,00 · Prazo: 3 dia(s) *(mantido nesta etapa)* |
 | Endereço | Nenhuma mensagem exibida | **"CEP 00000000 não encontrado"** em destaque |
+
+## Refinamento: ocultar frete e prazo quando o CEP não é válido
+
+Após esta primeira correção, o avaliador identificou que, mesmo com a
+mensagem de erro agora visível, o frete e o prazo de entrega
+continuavam sendo exibidos normalmente para um CEP inexistente — o que
+não fazia sentido do ponto de vista do usuário: se o endereço não é
+reconhecido, o sistema não deveria informar valor nem prazo de entrega
+para ele.
+
+**Correção**: `catalogo.js` e `carrinho.js` foram reestruturados para
+consultar o endereço **primeiro**; o frete só é consultado e exibido
+se o endereço for confirmado pela ViaCEP. Se o endereço falhar (CEP
+inexistente ou formato inválido), somente a mensagem de erro é
+exibida, e nenhuma informação de frete/prazo aparece. No carrinho, o
+valor de frete usado no cálculo do total também é zerado nesse caso.
+
+Resultado final, para o CEP `00000000`:
+
+| Campo | Comportamento final |
+|---|---|
+| Frete | **Não exibido** |
+| Endereço | **"CEP 00000000 não encontrado"** em destaque |
+| Total do carrinho | Recalculado sem incluir frete |
+
+![CEP inexistente: apenas a mensagem de erro é exibida, sem frete nem prazo](imagens/correcao_cep_sem_frete.png)
 
 ### Validação adicional: CEP com formato inválido (letras, tamanho incorreto)
 

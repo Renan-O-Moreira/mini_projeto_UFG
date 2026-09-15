@@ -169,39 +169,34 @@ async function calcularFreteECep() {
   if (!cep) return;
 
   const caixaEndereco = document.getElementById("caixa-endereco");
-  caixaEndereco.classList.remove("visivel");
+  caixaEndereco.classList.remove("visivel", "erro");
+  exibirMensagem("mensagem-cep", "", "");
 
   try {
-    const [frete, endereco] = await Promise.allSettled([
-      requisitarApi(`/frete/${encodeURIComponent(cep)}`),
-      requisitarApi(`/endereco/${encodeURIComponent(cep)}`),
-    ]);
+    const endereco = await requisitarApi(`/endereco/${encodeURIComponent(cep)}`);
+    caixaEndereco.textContent = `${endereco.logradouro ? endereco.logradouro + ", " : ""}${endereco.bairro ? endereco.bairro + " — " : ""}${endereco.cidade}/${endereco.estado}`;
+    caixaEndereco.classList.add("visivel");
+    localStorage.setItem("lojaUfgUltimoCep", cep);
 
-    if (frete.status === "fulfilled") {
-      valorFrete = frete.value.valor_frete;
-      localStorage.setItem("lojaUfgUltimoCep", cep);
+    try {
+      const frete = await requisitarApi(`/frete/${encodeURIComponent(cep)}`);
+      valorFrete = frete.valor_frete;
       exibirMensagem(
         "mensagem-cep",
-        `Frete: ${formatarMoeda(frete.value.valor_frete)} · Prazo: ${frete.value.prazo_dias} dia(s)`,
+        `Frete: ${formatarMoeda(frete.valor_frete)} · Prazo: ${frete.prazo_dias} dia(s)`,
         "sucesso"
       );
       const itens = await requisitarApi("/carrinho");
       atualizarResumo(itens);
-    } else {
-      exibirMensagem("mensagem-cep", frete.reason.message, "erro");
+    } catch (erroFrete) {
+      exibirMensagem("mensagem-cep", erroFrete.message, "erro");
     }
-
-    if (endereco.status === "fulfilled") {
-      const dados = endereco.value;
-      caixaEndereco.textContent = `${dados.logradouro ? dados.logradouro + ", " : ""}${dados.bairro ? dados.bairro + " — " : ""}${dados.cidade}/${dados.estado}`;
-      caixaEndereco.classList.remove("erro");
-      caixaEndereco.classList.add("visivel");
-    } else {
-      caixaEndereco.textContent = endereco.reason.message;
-      caixaEndereco.classList.add("visivel", "erro");
-    }
-  } catch (erro) {
-    exibirMensagem("mensagem-cep", "Não foi possível calcular o frete.", "erro");
+  } catch (erroEndereco) {
+    caixaEndereco.textContent = erroEndereco.message;
+    caixaEndereco.classList.add("visivel", "erro");
+    valorFrete = 0;
+    const itens = await requisitarApi("/carrinho");
+    atualizarResumo(itens);
   }
 }
 

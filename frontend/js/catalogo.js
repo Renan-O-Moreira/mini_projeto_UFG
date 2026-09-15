@@ -178,30 +178,26 @@ async function calcularFreteNoCatalogo() {
   if (!cep) return;
 
   const caixaEndereco = document.getElementById("caixa-endereco-catalogo");
-  caixaEndereco.classList.remove("visivel");
+  caixaEndereco.classList.remove("visivel", "erro");
+  exibirMensagemCep("", "");
 
-  const [frete, endereco] = await Promise.allSettled([
-    requisitarApi(`/frete/${encodeURIComponent(cep)}`),
-    requisitarApi(`/endereco/${encodeURIComponent(cep)}`),
-  ]);
-
-  if (frete.status === "fulfilled") {
-    localStorage.setItem("lojaUfgUltimoCep", cep);
-    exibirMensagemCep(
-      `Frete para ${frete.value.cep}: ${formatarMoeda(frete.value.valor_frete)} · Prazo: ${frete.value.prazo_dias} dia(s)`,
-      "sucesso"
-    );
-  } else {
-    exibirMensagemCep(frete.reason.message, "erro");
-  }
-
-  if (endereco.status === "fulfilled") {
-    const dados = endereco.value;
-    caixaEndereco.textContent = `${dados.logradouro ? dados.logradouro + ", " : ""}${dados.bairro ? dados.bairro + " — " : ""}${dados.cidade}/${dados.estado}`;
-    caixaEndereco.classList.remove("erro");
+  try {
+    const endereco = await requisitarApi(`/endereco/${encodeURIComponent(cep)}`);
+    caixaEndereco.textContent = `${endereco.logradouro ? endereco.logradouro + ", " : ""}${endereco.bairro ? endereco.bairro + " — " : ""}${endereco.cidade}/${endereco.estado}`;
     caixaEndereco.classList.add("visivel");
-  } else {
-    caixaEndereco.textContent = endereco.reason.message;
+    localStorage.setItem("lojaUfgUltimoCep", cep);
+
+    try {
+      const frete = await requisitarApi(`/frete/${encodeURIComponent(cep)}`);
+      exibirMensagemCep(
+        `Frete para ${frete.cep}: ${formatarMoeda(frete.valor_frete)} · Prazo: ${frete.prazo_dias} dia(s)`,
+        "sucesso"
+      );
+    } catch (erroFrete) {
+      exibirMensagemCep(erroFrete.message, "erro");
+    }
+  } catch (erroEndereco) {
+    caixaEndereco.textContent = erroEndereco.message;
     caixaEndereco.classList.add("visivel", "erro");
   }
 }

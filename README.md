@@ -426,9 +426,12 @@ antes de seguir adiante (*human on the loop*).
   carrinho, e a busca de endereço falhando em silêncio (sem exibir
   nenhuma mensagem) quando um CEP inexistente era informado. Esse
   último caso foi identificado ao testar o sistema pela perspectiva do
-  próprio avaliador, seguindo o passo a passo documentado no README, o
-  que reforça o valor de validar o software do ponto de vista de quem
-  vai efetivamente usá-lo, e não apenas dos testes automatizados.
+  próprio avaliador, seguindo o passo a passo documentado no README, e
+  passou por um segundo refinamento após nova rodada de testes: além
+  de exibir o erro, o frete e o prazo de entrega deixaram de ser
+  exibidos quando o CEP informado não é válido — reforçando o valor de
+  validar o software do ponto de vista de quem vai efetivamente
+  usá-lo, e não apenas dos testes automatizados.
 - **Bug de isolamento de testes encontrado por mim atuando como
   avaliador**: ao testar o projeto de forma independente (servidor
   rodando em um terminal e a suíte de testes em outro, sem apagar nada
