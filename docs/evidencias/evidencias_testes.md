@@ -77,6 +77,18 @@ de falha silenciosa. Essa é a evidência mais concreta de que o processo
 de TDD adotado cumpriu seu papel de revelar e proteger contra bugs
 reais, e não apenas validar o comportamento já esperado.
 
+## Falha real identificada durante testes manuais (perspectiva do avaliador)
+
+Além das falhas capturadas pelo TDD durante o desenvolvimento, uma
+falha de frontend foi identificada posteriormente ao testar o sistema
+seguindo o próprio passo a passo de instalação e uso, do ponto de
+vista de um avaliador: ao informar um CEP inexistente (ex:
+`00000000`), o sistema calculava e exibia o frete normalmente, mas não
+informava que o endereço não foi encontrado — a busca falhava em
+silêncio. A causa e a correção completa (incluindo evidência visual
+antes/depois) estão documentadas em
+[`correcao_cep_nao_encontrado.md`](correcao_cep_nao_encontrado.md).
+
 ## Como reproduzir esta evidência
 
 ```bash
