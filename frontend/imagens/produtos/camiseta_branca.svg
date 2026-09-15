@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <linearGradient id="corpoBranca" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="55%" stop-color="#EDEAE0"/>
+      <stop offset="100%" stop-color="#CFC9B8"/>
+    </linearGradient>
+    <linearGradient id="mangaBranca" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F2EFE6"/>
+      <stop offset="100%" stop-color="#D9D4C4"/>
+    </linearGradient>
+    <radialGradient id="brilhoBranca" cx="35%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity=".9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="120" cy="212" rx="64" ry="10" fill="#000" opacity=".12"/>
+  <path d="M90 34 L58 58 L58 96 L78 96 L78 206 L162 206 L162 96 L182 96 L182 58 L150 34 L128 50 L112 50 Z"
+        fill="url(#corpoBranca)" stroke="#B0A98F" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M90 34 L112 50 L94 66 L58 58 Z" fill="url(#mangaBranca)" stroke="#B0A98F" stroke-width="2"/>
+  <path d="M150 34 L128 50 L146 66 L182 58 Z" fill="url(#mangaBranca)" stroke="#B0A98F" stroke-width="2"/>
+  <path d="M112 50 C112 62 128 62 128 50" fill="none" stroke="#B0A98F" stroke-width="3"/>
+  <path d="M90 34 L58 58 L58 96 L78 96 L78 206 L162 206 L162 96 L182 96 L182 58 L150 34 L128 50 L112 50 Z"
+        fill="url(#brilhoBranca)"/>
+</svg>

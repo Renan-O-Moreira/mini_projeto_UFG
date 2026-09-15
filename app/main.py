@@ -27,7 +27,7 @@ async def ciclo_de_vida(aplicacao: FastAPI):
 
 
 aplicacao = FastAPI(
-    title="Loja Virtual - Mini-Projeto UFG",
+    title="Loja UFG",
     description="API da simulação de loja virtual desenvolvida como MVP.",
     version="0.1.0",
     lifespan=ciclo_de_vida,

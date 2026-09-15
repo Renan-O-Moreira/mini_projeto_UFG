@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja UFG</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="index.html">loja<em>ufg</em></a>
+    <nav class="principal">
+      <a class="ativo" href="index.html">Catálogo</a>
+      <a href="favoritos.html">Favoritos</a>
+      <a class="carrinho-btn" href="carrinho.html">Carrinho <span class="badge" id="badge-carrinho">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="faixa">
+      <div>
+        <span class="tag">Cupom disponível</span>
+        <h1>Escolha a cor, adicione ao carrinho.</h1>
+      </div>
+      <p>Três produtos, frete calculado pelo seu CEP em segundos.</p>
+    </div>
+
+    <div class="frete-catalogo">
+      <div>
+        <h2>Calcule o frete</h2>
+        <p>Informe seu CEP para ver o valor e o prazo de entrega antes de comprar.</p>
+      </div>
+      <div class="form-linha">
+        <input type="text" id="campo-cep-catalogo" placeholder="00000-000" maxlength="9">
+        <button id="botao-cep-catalogo" type="button">Calcular</button>
+      </div>
+      <p class="mensagem" id="mensagem-cep-catalogo"></p>
+      <div class="endereco-caixa" id="caixa-endereco-catalogo"></div>
+    </div>
+
+    <div class="grade" id="grade-produtos">
+      <p>Carregando produtos...</p>
+    </div>
+  </main>
+
+  <div class="barra-mobile">
+    <span id="barra-total">R$ 0,00</span>
+    <a href="carrinho.html"><button>Ver carrinho</button></a>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>
