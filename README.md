@@ -478,7 +478,7 @@ Produtos favoritados a partir do catálogo, com opção de remover.
 
 | Versão | Data | Descrição |
 |---|---|---|
-| `v1.0.0` | _a definir_ | Versão final de entrega da atividade |
+| [`v1.0.0`](https://github.com/Renan-O-Moreira/mini_projeto_UFG/releases/tag/v1.0.0) | 2026-09-15 | Versão final de entrega da atividade: backend completo (produtos, carrinho, cupom, frete, endereço/ViaCEP e favoritos) desenvolvido via TDD, frontend funcional consumindo todas as APIs, 84 testes automatizados, Makefile para instalação/execução/teste e documentação completa (incluindo evidências de teste e correções encontradas na validação como avaliador) |
 
 ---
 
